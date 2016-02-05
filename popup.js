@@ -1,10 +1,11 @@
 (function (window, document) {
     'use strict';
+
     var bgPage = chrome.extension.getBackgroundPage(),
         createRuleBtn = document.getElementById('create_rule'),
         listBox = document.getElementById('list_box'),
         itemStr = '<div class="item"><input type="text"/><span class="off" data-status="off">开启</span></div>',
-        rulesStorage = JSON.parse(bgPage.localStorage.getItem('EVIL_RULES')),
+        rulesStorage = JSON.parse(bgPage.localStorage.getItem('EVIL_RULES')) || [],
         rulesHandle = function () {
             var list = listBox.querySelectorAll('.item'),
                 i,
@@ -35,19 +36,22 @@
                 str +='<div class="item"><input value="'+ rulesStorage[i].value +'" type="text"/>' +
                     '<span class="'+ status +'" data-status="'+ status +'">'+ text +'</span></div>';
             }
+
             listBox.innerHTML = str;
         };
-
     renderRules();
 
     createRuleBtn.addEventListener('click', function () {
+
         listBox.insertAdjacentHTML('beforeEnd', itemStr);
     });
 
+
+
     listBox.addEventListener('click', function (e) {
+
         var target = e.target,
-            status = target.getAttribute('data-status'),
-            input = target.parentNode.querySelector('input');
+            status = target.getAttribute('data-status');
 
         if(target.tagName === 'SPAN'){
             if(status === 'off'){
@@ -63,5 +67,6 @@
             rulesHandle();
         }
     });
+
 
 }(window, document));

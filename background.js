@@ -10,17 +10,19 @@ for(i= 0; i< len; i+=1){
 }
 
 console.log(rules,"rules")
-chrome.webRequest.onBeforeRequest.addListener(
-    function (details) {
-        console.log(details,"details")
-        return {redirectUrl: chrome.extension.getURL('index.html')};
-    },
-    {
-        urls: rules,
-        types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
-    },
-    ["blocking"]
-);
+if(rules.length){
+    chrome.webRequest.onBeforeRequest.addListener(
+        function (details) {
+            console.log(details,"details")
+            return {redirectUrl: chrome.extension.getURL('index.html')};
+        },
+        {
+            urls: rules,
+            types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
+        },
+        ["blocking"]
+    );
+}
 
 
 

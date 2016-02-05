@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        body{
+            min-width: 200px;
+        }
+
+        .list-box .item{
+            margin-bottom: 10px;
+        }
+
+        .list-box span{
+            margin-left: 10px;
+        }
+
+        .list-box .on{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<img src="nobaidu.jpg" alt=""/>
+<h3>增加需要屏蔽的域名（示例： "*://*.baidu.com/*"）</h3>
+<div id="list_box" class="list-box">
+    <div class="item">
+        <input type="text"/><span class="off" data-status="off">开启</span>
+    </div>
+</div>
+<input id="create_rule" type="button" value="增加新规则"/>
+
 <script src="popup.js"></script>
 </body>
 </html>

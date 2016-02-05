@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "no baidu",
+  "description": "This extension demonstrates a browser action with kittens.",
+  "version": "1.0",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "webRequest",
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "webRequestBlocking"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    "nobaidu.jpg"
+  ]
+}
